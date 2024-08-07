@@ -14,3 +14,12 @@ class LearningCenter(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class AdminUser(models.Model):
+    name = models.CharField(max_length=100)
+    login = models.CharField(max_length=100, unique=True)
+    password = models.CharField(max_length=100)  # Normally you'd use Django's User model for better security
+
+    def __str__(self):
+        return self.name
