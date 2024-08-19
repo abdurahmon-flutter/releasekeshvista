@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #apps
     'admin_panel.apps.AdminPanelConfig',
     'rest_framework',
     "corsheaders"
