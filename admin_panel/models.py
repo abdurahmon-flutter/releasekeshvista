@@ -12,7 +12,8 @@ class LearningCenter(models.Model):
     create_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
     manager_password = models.CharField(max_length=255)
-
+    login = models.CharField(max_length=100)
+    password = models.CharField(max_length=255)
     def __str__(self):
         return self.name
 
@@ -26,13 +27,7 @@ class AdminUser(models.Model):
         return self.name
 
 
-class LearningCenterDetails(models.Model):
-    learningCenterId = models.IntegerField()
-    balance = models.FloatField()
-    studentId = models.IntegerField()
 
-    def __str__(self):
-        return self.studentId
 
 
 class Student(models.Model):
@@ -55,12 +50,37 @@ class Student(models.Model):
 class LearningCenterGroupStatus(models.Model):
     learningCenterDetailID = models.IntegerField()
     learningCenterGroupId = models.IntegerField()
-    dailyPayment = models.FloatField()
+    learningCenterID = models.IntegerField()
+    studentID = models.IntegerField()
+    paymentAmount = models.FloatField()
+    status = models.CharField(max_length=250)
+    nextPaymentMonth = models.IntegerField()
+    nextPaymentYear = models.IntegerField()
+    paymentPeriod = models.IntegerField()
+    lastPayedMonth = models.IntegerField()
+    lastPayedYear = models.IntegerField()
+    def __str__(self):
+        return str(self.learningCenterGroupId)
+
+def checkBalance(learningCenterDetailID,payment):
+    balance = 0
+    lcenter_detail_queryset = LearningCenterDetails.objects.all()
+    
+    for lcenter_detail in lcenter_detail_queryset:
+        if(lcenter_detail.id==learningCenterDetailID):
+            balance = lcenter_detail.balance
+    if(balance<=payment):
+        return False
+    else:
+        return True
+class LearningCenterDetails(models.Model):
+    learningCenterId = models.IntegerField()
+    balance = models.FloatField()
+    debt = models.FloatField()
+    studentId = models.IntegerField()
 
     def __str__(self):
-        return self.learningCenterGroupId
-
-
+        return str(self.studentId)
 class Teacher(models.Model):
     teacherName = models.CharField(max_length=100)
     teacherPhone_number = models.CharField(max_length=20)
