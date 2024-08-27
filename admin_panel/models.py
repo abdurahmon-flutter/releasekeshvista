@@ -12,8 +12,9 @@ class LearningCenter(models.Model):
     create_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
     manager_password = models.CharField(max_length=255)
-    login = models.CharField(max_length=100)
-    password = models.CharField(max_length=255)
+    login = models.CharField(max_length=250)
+    password = models.CharField(max_length=250)
+    userType = models.CharField(max_length=250)
     def __str__(self):
         return self.name
 
@@ -37,11 +38,11 @@ class Student(models.Model):
     studentImage = models.ImageField(upload_to='students/', blank=True, null=True)
     studentBio = models.TextField(),
     parentId = models.IntegerField()
-    login = models.CharField(max_length=100)
-    password = models.CharField(max_length=100)
+    login = models.CharField(max_length=250)
+    password = models.CharField(max_length=250)
     create_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
-
+    userType = models.CharField(max_length=250)
     def __str__(self):
         return self.studentName
 
@@ -87,7 +88,9 @@ class Teacher(models.Model):
     teacherBio = models.TextField()
     teacherAge = models.IntegerField()
     learningCenterIDsList = models.JSONField(default=list)
-
+    userType = models.CharField(max_length=250)
+    login = models.CharField(max_length=250)
+    password = models.CharField(max_length=250)
     def __str__(self):
         return self.teacherName
 
