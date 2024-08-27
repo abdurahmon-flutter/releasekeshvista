@@ -166,4 +166,16 @@ class TeacherListCreate(generics.ListCreateAPIView):
 
 class TeacherRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Teacher.objects.all()
-    serializer_class = TeacherSerializer          
+    serializer_class = TeacherSerializer
+
+
+
+
+class ParentListCreate(generics.ListCreateAPIView):
+    queryset = Parent.objects.all()
+    serializer_class = ParentSerializer
+
+
+class ParentRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Parent.objects.all()
+    serializer_class = ParentSerializer     

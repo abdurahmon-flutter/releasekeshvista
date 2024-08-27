@@ -19,5 +19,7 @@ urlpatterns = [
     path("students/<int:pk>",views.StudentRetrieveUpdateDestroy.as_view(),name="lmqwl,x;qmx-dteail"),
     path("teachers/<int:pk>/",views.TeacherRetrieveUpdateDestroy.as_view(),name="teachers-dteail"),
     path("teachers/",views.TeacherListCreate.as_view(),name="teachers"),
-    path("current-time/",views.CurrentbalanceView.as_view(),name="mkxkqw")
+    path("current-time/",views.CurrentbalanceView.as_view(),name="mkxkqw"),
+    path("parents/",views.ParentListCreate.as_view(),name="parent_list_create"),
+    path("parents/<int:pk>",views.ParentRetrieveUpdateDestroy.as_view(),name="parent_update_delete")
 ]

@@ -36,7 +36,6 @@ class Student(models.Model):
     studentPhone_number = models.CharField(max_length=20)
     studentImage = models.ImageField(upload_to='students/', blank=True, null=True)
     studentBio = models.TextField(),
-    learningCenterIDsList = models.JSONField(default=list)
     parentId = models.IntegerField()
     login = models.CharField(max_length=100)
     password = models.CharField(max_length=100)
@@ -101,3 +100,15 @@ class RequestToApply(models.Model):
 
     def __str__(self):
         return self.name
+class Parent(models.Model):
+    fatherName = models.CharField(max_length=250)
+    motherName = models.CharField(max_length=250)
+    fatherPhone = models.CharField(max_length=250)
+    motherPhone = models.CharField(max_length=250)
+    fatherImage = models.CharField(max_length=250)
+    motherImage = models.CharField(max_length=250)
+    login = models.CharField(max_length=250)
+    password = models.CharField(max_length=250)
+
+    def __str__ (self):
+        return self.fatherName
