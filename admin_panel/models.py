@@ -115,3 +115,58 @@ class Parent(models.Model):
 
     def __str__ (self):
         return self.fatherName
+    
+class Course(models.Model):
+    courseName = models.CharField(max_length=250)
+    courseImage = models.ImageField(upload_to="courses/", blank=True, null=True)
+    courseBio = models.TextField()
+    courseCategory = models.CharField(max_length=250)
+    lcenterID = models.IntegerField()
+    minStudent = models.CharField(max_length=250)
+    studentList = models.CharField(max_length=250)
+    create_date = models.DateTimeField(auto_now_add=True)
+    update_date = models.DateTimeField(auto_now=True)
+
+    def __str__ (self):
+        return self.courseName
+    
+
+class Group(models.Model):
+    groupName = models.CharField(max_length=300)
+    groupImage = models.CharField(max_length=300)
+    roomId = models.IntegerField()
+    chatId = models.IntegerField()
+    create_date = models.DateTimeField(auto_now_add=True)
+    update_date = models.DateTimeField(auto_now=True)
+    lcenterID = models.IntegerField()
+    courseId = models.IntegerField()
+    
+    def __str__(self):
+        return self.groupName
+    
+
+class Room(models.Model):
+    lcenterID = models.IntegerField()
+    roomName = models.CharField(max_length=300)
+    roomLocationBio = models.TextField()
+    branchID = models.IntegerField()
+
+
+    def __str__(self):
+        return self.roomName
+
+
+
+class Branch(models.Model):
+    lcenterID = models.IntegerField()
+    branchLocation  = models.CharField(max_length=1000)
+    branchImage = models.ImageField(upload_to="branch-images/", blank=True,null=True)
+    create_date = models.DateTimeField(auto_now_add=True)
+    update_date = models.DateTimeField(auto_now=True)
+
+
+    def __str__(self):
+        return "Branch of :" + self.lcenterID
+
+
+
